@@ -28,7 +28,7 @@ export default function Aside() {
                     </NavLink>
                     <NavLink to={'/airlineDesk'} className={({isActive}) =>
                                 `${styles["nav-link"]} ${isActive ? styles.active : ''}`}>
-                        <span>♙</span>Airline Desk Table
+                        <span>♙</span>Airline Desk
                     </NavLink>
                 </nav>
                 <div className={styles["sidebar-weather"]}>
