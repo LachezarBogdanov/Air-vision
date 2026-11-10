@@ -9,7 +9,7 @@ export default function Aside() {
                 <a className={styles.brand} href="index.html">
                     <span className={styles["brand-mark"]}>✈</span>
                     <span>
-                        <b>Airport Vision</b>
+                        <b>Airport Vision!!!</b>
                         <small>International Airport Guide</small>
                     </span>
                 </a>

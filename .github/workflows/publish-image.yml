@@ -29,13 +29,13 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Docker Image
-        run: docker build -t air-vision "./Air Vision/air-vision"
+        run: docker build -t air-vision:latest "./Air Vision/air-vision"
 
       - name: Tag Docker Image
         run: |
-          docker tag air-vision ghcr.io/lachezarbogdanov/air-vision:${{ github.ref_name }}
+          docker tag air-vision:latest ghcr.io/lachezarbogdanov/air-vision:${{ github.ref_name }}
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            docker tag air-vision ghcr.io/lachezarbogdanov/air-vision:latest
+            docker tag air-vision:latest ghcr.io/lachezarbogdanov/air-vision:latest
           fi
 
       - name: Push Docker Image
