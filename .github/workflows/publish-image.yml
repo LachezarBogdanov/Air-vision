@@ -33,14 +33,10 @@ jobs:
 
       - name: Tag Docker Image
         run: |
-          docker tag air-vision:latest ghcr.io/lachezarbogdanov/air-vision:${{ github.ref_name }}
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            docker tag air-vision:latest ghcr.io/lachezarbogdanov/air-vision:latest
-          fi
+          tag_name=$(date "+%Y%m%d-%H%M")
+          docker tag air-vision:latest ghcr.io/lachezarbogdanov/air-vision:$tag_name
 
       - name: Push Docker Image
         run: |
-          docker push ghcr.io/lachezarbogdanov/air-vision:${{ github.ref_name }}
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            docker push ghcr.io/lachezarbogdanov/air-vision:latest
-          fi
+          tag_name=$(date "+%Y%m%d-%H%M")
+          docker push ghcr.io/lachezarbogdanov/air-vision:$tag_name
