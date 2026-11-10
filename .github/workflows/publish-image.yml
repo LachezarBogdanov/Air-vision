@@ -33,10 +33,10 @@ jobs:
 
       - name: Tag Docker Image
         run: |
-          tag_name=$(date "+%Y%m%d-%H%M%S")
+          tag_name=$(date "+%Y%m%d-%H%M%S-%3N")
           docker tag air-vision:latest ghcr.io/lachezarbogdanov/air-vision:$tag_name
 
       - name: Push Docker Image
         run: |
-          tag_name=$(date "+%Y%m%d-%H%M%S")
+          tag_name=$(date "+%Y%m%d-%H%M%S-%3N")
           docker push ghcr.io/lachezarbogdanov/air-vision:$tag_name
