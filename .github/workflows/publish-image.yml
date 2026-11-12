@@ -28,15 +28,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Image Tag
+        run: echo "IMAGE_TAG=$(date '+%Y%m%d-%H%M%S-%3N')" >> $GITHUB_ENV
+
       - name: Build Docker Image
         run: docker build -t air-vision:latest "./Air Vision/air-vision"
 
       - name: Tag Docker Image
-        run: |
-          tag_name=$(date "+%Y%m%d-%H%M%S-%3N")
-          docker tag air-vision:latest ghcr.io/lachezarbogdanov/air-vision:$tag_name
+        run: docker tag air-vision:latest ghcr.io/lachezarbogdanov/air-vision:${{ env.IMAGE_TAG }}
 
       - name: Push Docker Image
-        run: |
-          tag_name=$(date "+%Y%m%d-%H%M%S-%3N")
-          docker push ghcr.io/lachezarbogdanov/air-vision:$tag_name
+        run: docker push ghcr.io/lachezarbogdanov/air-vision:${{ env.IMAGE_TAG }}
